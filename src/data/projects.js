@@ -1,0 +1,15 @@
+export const projects = [
+  {id:1, name:'Counter App', path:'/projects/counter'},
+  {id:2, name:'Todo App', path:'/projects/todo'},
+  {id:3, name:'Debounce', path:'/projects/debounce'},
+  {id:4, name:'Infinite Scroll', path:'/projects/infinite'},
+  {id:5, name:'Pagination', path:'/projects/pagination'},
+  // {id:6, name:'Responsive Navbar', path:'/projects/responsive-navbar'},
+  {id:7, name:'Reviews', path:'/projects/reviews'},
+  {id:8, name:'RBG Color Mixer', path:'/projects/rgb'},
+  {id:9, name:'Step Progress Bar', path:'/projects/progress-bar'},
+  {id:10, name:'Stop Watch', path:'/projects/stop-watch'},
+  {id:11, name:'Theme Switcher', path:'/projects/theme'},
+  {id:12, name:'Star Rating', path:'/projects/rating'},
+  {id:13, name:'Tabs Components', path:'/projects/tabs'},
+]

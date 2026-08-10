@@ -1,0 +1,45 @@
+import React, { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router";
+const Counter = lazy(() => import("../projects/counter app/Counter"));
+const MainContent = lazy(() => import("../components/MainContent"));
+const TodoApp = lazy(() => import("../projects/todo app/TodoApp"));
+const Debouce = lazy(() => import("../projects/debounced serach/Debouce"));
+const InfiniteScroll = lazy(() =>import( "../projects/infinite scroll/InfiniteScroll"));
+const Pagination = lazy(() => import("../projects/pagination/Pagination"));
+const Review = lazy(() => import ("../projects/reviews/Review"));
+const ColorMixer = lazy(() => import("../projects/rgb color mixer/ColorMixer"));
+const StepProgressBar = lazy(
+  () => import("../projects/step progress bar/StepProgressBar"));
+const Stopwatch = lazy(() => import( "../projects/stopwatch/Stopwatch"));
+const Mode = lazy(() => import("../projects/theme switcher/Mode"));
+const StarRating = lazy(() => import("../projects/star rating/StarRating"));
+const TabsComponent = lazy(() => import("../projects/tabs component/TabsComponent"));
+
+const AppRoutes = () => {
+  return (
+    <Suspense fallback={<h1 className="text-5xl flex justify-center  text-red-500 font-bold">Loading...</h1>}>
+      <Routes>
+        <Route element={<MainContent />}>
+          <Route path="/" element={<h1>Home page</h1>} />
+          <Route path="/about" element={<h1>About page</h1>} />
+
+          <Route path="projects/counter" element={<Counter />} />
+          <Route path="projects/todo" element={<TodoApp />} />
+          <Route path="projects/debounce" element={<Debouce />} />
+          <Route path="projects/infinite" element={<InfiniteScroll />} />
+          <Route path="projects/pagination" element={<Pagination />} />
+          <Route path="projects/reviews" element={<Review />} />
+          <Route path="projects/rgb" element={<ColorMixer />} />
+          <Route path="projects/progress-bar" element={<StepProgressBar />} />
+          <Route path="projects/stop-watch" element={<Stopwatch />} />
+          <Route path="projects/theme" element={<Mode />} />
+          <Route path="projects/rating" element={<StarRating />} />
+          <Route path="projects/tabs" element={<TabsComponent />} />
+          <Route path="projects/todo" element={<TodoApp />} />
+        </Route>
+      </Routes>
+    </Suspense>
+  );
+};
+
+export default AppRoutes;
