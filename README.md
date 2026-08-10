@@ -1,16 +1,89 @@
-# React + Vite
+# Tasks
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Vite application with Tailwind, Redux, and a collection of small UI projects and components.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This repository is a development playground for UI components, interactive examples, and feature demos built with:
 
-## React Compiler
+- React 19
+- Vite
+- Tailwind CSS
+- Redux Toolkit
+- React Router
+- React Icons
+- Debounced search utilities
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Key Features
 
-## Expanding the ESLint configuration
+- `/src/projects/` contains multiple demo apps, including:
+  - Counter app
+  - Debounced search
+  - Infinite scroll
+  - Pagination
+  - Reviews component
+  - RGB color mixer
+  - Star rating
+  - Step progress bar
+  - Stopwatch
+  - Tabs component
+  - Theme switcher
+  - Todo app
+- Shopping cart feature in `/src/projects/shopping cart/`
+- Application routing under `/src/routes/AppRoutes.jsx`
+- Theme context support in `/src/context/ThemeContext.jsx`
+- Redux store setup in `/src/app/store.js`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting Started
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run development server
+
+```bash
+npm run dev
+```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+### Lint project
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+- `src/`
+  - `App.jsx` - main application entry component
+  - `main.jsx` - Vite client entry point
+  - `index.css` - global styles
+  - `app/` - Redux store configuration
+  - `components/` - shared UI components
+  - `context/` - React context providers
+  - `data/` - static data sources
+  - `projects/` - example app pages and demos
+  - `routes/` - application routing files
+
+## Notes
+
+- This workspace is intended for experimentation and learning.
+- The repository includes a mix of completed examples and work-in-progress demos.
+
+## License
+
+This project is currently unlicensed. Feel free to add a license file if needed.
