@@ -1,34 +1,44 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const url = "https://dummyjson.com/products";
+
 export const fetchProducts = createAsyncThunk("products", async () => {
   try {
     const response = await fetch(url);
-    const result = await response.json();
-    return result.products;
-  } catch (error) {
-    console.error(error);
+    if (!response.ok) {
+      throw new Error("Network Error");
+    }
+    const data = await response.json();
+    return data.products;
+  } catch (err) {
+    console.error(err);
   }
 });
 
 function getData() {
-  const data = localStorage.getItem("products");
-  return data ? JSON.parse(data) : [];
+  try{
+  const saveData = localStorage.getItem("products");
+  return saveData? JSON.parse(saveData): [];
+  }catch(err){
+    console.error('Invalid JSON in localStorage',err)
+    localStorage.removeItem('products')
+    return []
+  }
 }
 
-function saveData(product) {
-  localStorage.setItem("products", JSON.stringify(product));
+function saveData(products) {
+  localStorage.setItem("products", JSON.stringify(products));
 }
 
 const initialState = {
-  data: [],
+  items: [],
   cart: getData(),
-  status: undefined,
   loading: false,
   error: null,
+  status: undefined,
 };
 
-const ProductSlice = createSlice({
+const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
@@ -40,16 +50,14 @@ const ProductSlice = createSlice({
       state.cart = state.cart.filter((item) => item.id !== action.payload);
       saveData(state.cart);
     },
-
-    updateQuantity: (state, action) => {
+    update: (state, action) => {
       const { id, quantity } = action.payload;
-      const item = state.cart.find((item) => item.id === id);
-      if (item) {
-        item.quantity = quantity > 0 ? quantity : 1;
+      const newData = state.cart.find((item) => item.id === id);
+      if (newData) {
+        newData.quantity = quantity > 0 ? quantity : 1;
       }
       saveData(state.cart);
     },
-
     clear: (state) => {
       state.cart = [];
       saveData(state.cart);
@@ -58,20 +66,19 @@ const ProductSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
-        state.status = "Pending";
-        state.loading = true;
+        ((state.status = "pending"), (state.loading = true));
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.data = action.payload;
-        state.status = "Succeeded";
-        state.loading = false;
+        state.items = action.payload;
+        ((state.status = "successfull"), (state.loading = false));
       })
       .addCase(fetchProducts.rejected, (state, action) => {
+        state.status = "rejected";
         state.loading = false;
-        state.error = action.payload.message;
+        state.error = action.error.message;
       });
   },
 });
 
-export const { add, remove, clear, updateQuantity } = ProductSlice.actions;
-export default ProductSlice.reducer;
+export const { add, remove, update, clear } = productSlice.actions;
+export default productSlice.reducer;

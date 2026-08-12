@@ -1,12 +1,12 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router";
-import { projects } from "../data/projects";
+import { projects } from "../../data/projects";
 
 const Sidebar = () => {
   const location = useLocation();
   return (
-    <aside className="w-64 h-screen bg-gray-900 fixed left-0 top-0 border ">
-      <h3 className="text-xl bg-sky-500 flex items-center justify-center  border-b h-16">
+    <aside className="w-64 h-screen bg-gray-900 fixed left-0 top-0 border border-gray-500">
+      <h3 className="text-xl bg-sky-500 flex items-center justify-center   h-16">
         Projects
       </h3>
 

@@ -15,7 +15,7 @@ const InfiniteScroll = () => {
 
   const newData = Array.from(
     { length: 10 },
-    (_, i) => `Item ${(pageItem - 1) * 10 + i + 1}`,
+    (_, i) => `Infinte  Item ${(pageItem - 1) * 10 + i + 1}`,
   );
   setItems((prev) => [...prev, ...newData]);
   setLoading(false);
@@ -47,7 +47,7 @@ const InfiniteScroll = () => {
           <p key={i}>{item}</p>
         ))
       }
-      <div className="text-2xl font-bold text-yellow-500" ref={loaderRef}>{loading?'Loading...':''}</div>
+      <div className="text-2xl font-bold text-yellow-500 mt-5" ref={loaderRef}>{loading?'Loading...':''}</div>
     </div>
   );
 };
