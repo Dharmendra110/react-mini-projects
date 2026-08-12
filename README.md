@@ -100,8 +100,8 @@ src/
 ├── features/
 │   ├── auth/               - Authentication (Login, Register)
 │   ├── products/           - E-commerce (Products, Cart with Redux)
-│   ├── user/               - User management
-│   └── fetchAPIs/          - API methods (getUsers, addUsers, updateUsers, deleteUsers)
+│   |── user/               - User management
+│  
 ├── projects/               - Demo and example components
 │   ├── counter app/        - Redux counter demo
 │   ├── debounced serach/   - Debounce search utility
