@@ -1,37 +1,37 @@
-import { useThrottleFn } from "ahooks";
-import React, { useEffect, useState } from "react";
-import { useDebounce } from "use-debounce";
+import { useEffect, useState } from "react";
 
 const Debouce = () => {
   const [search, setSearch] = useState("");
-  const [data,setData] = useState('')
+  const [data, setData] = useState("");
   // Custom Debouce
-  useEffect(()=>{
+  useEffect(() => {
     const delayFn = setTimeout(() => {
-   if(search){
-    console.log('React API Call:',search)
-    setData(search)
-   }
-    },2000);
+      if (search) {
+        console.log("React API Call:", search);
+        setData(search);
+      }
+    }, 2000);
 
-    return ()=>  clearTimeout(delayFn)
-  },[search])
+    return () => clearTimeout(delayFn);
+  }, [search]);
 
   // use-debounce Library
   // const [value] = useDebounce(search,2000)
 
   // ahooks Library for throttling
 
-//   const {run} = useThrottleFn(()=>{
-//     console.log('Throttled function executed')
-//   },
-// {
-//   wait:2000
-// })
+  //   const {run} = useThrottleFn(()=>{
+  //     console.log('Throttled function executed')
+  //   },
+  // {
+  //   wait:2000
+  // })
 
   return (
     <div>
-      <h1 className="text-2xl text-purple-500 font-bold p-3">Debouced Search</h1>
+      <h1 className="text-2xl text-purple-500 font-bold p-3">
+        Debouced Search
+      </h1>
       <h1 className="text-xl text-yellow-400">{data}</h1>
       <input
         onChange={(e) => setSearch(e.target.value)}
@@ -45,4 +45,3 @@ const Debouce = () => {
 };
 
 export default Debouce;
-

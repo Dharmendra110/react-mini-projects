@@ -1,40 +1,39 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo, deleteTodo, editTodo, updateTodo } from "./TodoSlice";
 // Using RTK
 const TodoApp = () => {
-
-  const {todos,edit} = useSelector(state=>state.todos)
-  const dispatch = useDispatch()
+  const { todos, edit } = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
 
   const [name, setName] = useState("");
-  const [age, setAge] = useState(""); 
+  const [age, setAge] = useState("");
 
   // 1 CREATE - ADD
   function handleAdd() {
-    if (name.trim() == "")  return alert("The name cannot be empty");
-    else if(age.trim()==='') return alert('Age cannot be empty')
+    if (name.trim() == "") return alert("The name cannot be empty");
+    else if (age.trim() === "") return alert("Age cannot be empty");
 
     const newdata = {
       id: Date.now(),
       name,
       age,
     };
-     dispatch(addTodo(newdata))
+    dispatch(addTodo(newdata));
     setName("");
     setAge("");
   }
 
   // 2. DELETE
   function handleDelete(id) {
-    dispatch(deleteTodo(id))
+    dispatch(deleteTodo(id));
   }
 
   // 3. EDIT
   function handleEdit(item) {
-    setName(item.name)
-    setAge(item.age)
-     dispatch(editTodo(item.id))
+    setName(item.name);
+    setAge(item.age);
+    dispatch(editTodo(item.id));
   }
 
   // 4. UPDATE
@@ -42,14 +41,14 @@ const TodoApp = () => {
     if (!name.trim() || !age.trim()) {
       return alert("please enter valid data");
     }
-  
-    dispatch(updateTodo({id:edit,name,age}));
+
+    dispatch(updateTodo({ id: edit, name, age }));
     setAge("");
     setName("");
   }
 
   return (
-    <div >
+    <div>
       <h1 className="m-5 text-4xl font-bold text-yellow-400">Todo App</h1>
       <label htmlFor="name">Name</label>
       <input
@@ -69,7 +68,10 @@ const TodoApp = () => {
         type="number"
         placeholder="Enter Your AGe"
       />
-      <button className={`p-2 rounded-xl ${edit?'bg-green-600 hover:bg-green-700':'bg-blue-500 hover:bg-blue-600'}`} onClick={edit ? handleUpdate : handleAdd}>
+      <button
+        className={`p-2 rounded-xl ${edit ? "bg-green-600 hover:bg-green-700" : "bg-blue-500 hover:bg-blue-600"}`}
+        onClick={edit ? handleUpdate : handleAdd}
+      >
         {edit ? "Update" : "Add"}
       </button>
 
@@ -244,23 +246,6 @@ export default TodoApp;
 // };
 
 // export default TodoApp;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React, { useEffect, useState } from "react";
 

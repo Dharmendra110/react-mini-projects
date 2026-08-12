@@ -1,15 +1,14 @@
-import React, { useState } from "react";
-import { IoHome } from "react-icons/io5";
+import { useState } from "react";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { FaArrowRight } from "react-icons/fa";
 import { Link, NavLink, useLocation } from "react-router";
 import { MdDarkMode } from "react-icons/md";
 import { TiShoppingCart } from "react-icons/ti";
 import { MdLightMode } from "react-icons/md";
-import { useTheme } from "../../context/ThemeContext";
-import {useSelector} from 'react-redux'
+import { useTheme } from "../../context/useTheme";
+import { useSelector } from "react-redux";
 const Header = () => {
-  const count = useSelector(state=>state.products.cart.length)
+  const count = useSelector((state) => state.products.cart.length);
   const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -23,7 +22,7 @@ const Header = () => {
   return (
     <header className="h-16 bg-gray-900 flex items-center ml-64 justify-between px-10 border border-gray-500 fixed left-0 right-0  ">
       <div className="flex  text-blue-800 font-bold text-md gap-3 items-center bg-blue-50 px-2 py-1 rounded hover:scale-105 transition-transform ">
-        <Link to='/'>Dummy APIs </Link>
+        <Link to="/">Dummy APIs </Link>
         <FaArrowRight />
       </div>
 
@@ -75,16 +74,15 @@ const Header = () => {
               >
                 {tab.name}
               </Link>
-              
             ))}
-             <div className="flex items-center">
-          <Link to={"/cart"} className="text-3xl relative inline-block">
-            <TiShoppingCart className=" hover:text-blue-400 transition" />
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-6 h-6 flex items-center justify-center rounded-full">
-              {count}
-            </span>
-          </Link>
-        </div>
+            <div className="flex items-center">
+              <Link to={"/cart"} className="text-3xl relative inline-block">
+                <TiShoppingCart className=" hover:text-blue-400 transition" />
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-6 h-6 flex items-center justify-center rounded-full">
+                  {count}
+                </span>
+              </Link>
+            </div>
             <button onClick={toggleTheme} className="text-2xl">
               {theme === "light" ? <MdDarkMode /> : <MdLightMode />}
             </button>
