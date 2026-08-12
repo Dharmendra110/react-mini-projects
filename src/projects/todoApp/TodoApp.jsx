@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, deleteTodo, editTodo, updateTodo } from "./TodoSlice";
+import { addTodo, deleteTodo, editTodo, updateTodo } from "./todoSlice";
 // Using RTK
 const TodoApp = () => {
   const { todos, edit } = useSelector((state) => state.todos);
