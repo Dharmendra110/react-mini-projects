@@ -1,29 +1,29 @@
 import React, { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router";
 
-const Products = lazy(()=>import ("../features/products/Products"));
-const Cart = lazy(()=>import ( "../features/products/Cart"));
-const PageNotFound = lazy(()=>import ( "../components/PageNotFound"));
+const Products = lazy(() => import("../features/products/Products"));
+const Cart = lazy(() => import("../features/products/Cart"));
+const PageNotFound = lazy(() => import("../components/PageNotFound"));
 
 const Users = lazy(() => import("../features/user/Users"));
-const Counter = lazy(() => import("../projects/counter app/Counter"));
+const Counter = lazy(() => import("../projects/counter-app/Counter"));
 const MainContent = lazy(() => import("../components/Layout/MainContent"));
-const TodoApp = lazy(() => import("../projects/todo app/TodoApp"));
-const Debouce = lazy(() => import("../projects/debounced serach/Debouce"));
+const TodoApp = lazy(() => import("../projects/todoApp/TodoApp"));
+const Debouce = lazy(() => import("../projects/debounced-serach/Debouce"));
 const InfiniteScroll = lazy(
-  () => import("../projects/infinite scroll/InfiniteScroll"),
+  () => import("../projects/infinite-scroll/InfiniteScroll"),
 );
 const Pagination = lazy(() => import("../projects/pagination/Pagination"));
 const Review = lazy(() => import("../projects/reviews/Review"));
-const ColorMixer = lazy(() => import("../projects/rgb color mixer/ColorMixer"));
+const ColorMixer = lazy(() => import("../projects/rgb-color-mixer/ColorMixer"));
 const StepProgressBar = lazy(
-  () => import("../projects/step progress bar/StepProgressBar"),
+  () => import("../projects/step-progress-bar/StepProgressBar"),
 );
 const Stopwatch = lazy(() => import("../projects/stopwatch/Stopwatch"));
-const Mode = lazy(() => import("../projects/theme switcher/Mode"));
-const StarRating = lazy(() => import("../projects/star rating/StarRating"));
+const Mode = lazy(() => import("../projects/theme-switcher/Mode"));
+const StarRating = lazy(() => import("../projects/star-rating/StarRating"));
 const TabsComponent = lazy(
-  () => import("../projects/tabs component/TabsComponent"),
+  () => import("../projects/tabs-component/TabsComponent"),
 );
 
 const AppRoutes = () => {
@@ -37,8 +37,11 @@ const AppRoutes = () => {
     >
       <Routes>
         <Route element={<MainContent />}>
-         <Route index element={<h1 className="text-3xl text-yellow-500">Home Page</h1>}/>
-          <Route  path="/users" element={<Users />} />
+          <Route
+            index
+            element={<h1 className="text-3xl text-yellow-500">Home Page</h1>}
+          />
+          <Route path="/users" element={<Users />} />
           <Route path="/products" element={<Products />} />
           <Route path="/cart" element={<Cart />} />
 
@@ -56,8 +59,7 @@ const AppRoutes = () => {
           <Route path="projects/tabs" element={<TabsComponent />} />
           <Route path="projects/todo" element={<TodoApp />} />
         </Route>
-        <Route path="*" element={<PageNotFound/>}/>
-
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Suspense>
   );
