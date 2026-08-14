@@ -40,23 +40,23 @@ const Cart = () => {
         Cart Items
       </h1>
 
-      <div className="flex justify-between mx-10">
-        <button
-          onClick={clearData}
-          className="text-xl p-2 mx-40 font-bold bg-[#DC2626]  rounded hover:scale-105"
-        >
-          Clear Data
-        </button>
+      <div className=" text-right ">
 
         <span className="text-right text-xl fixed right-7 top-20 font-bold  bg-green-600 p-2 rounded">
           Total Price: {total}
         </span>
+        <button
+          onClick={clearData}
+          className="text-xl p-2 mx-20 font-bold bg-[#DC2626]  rounded hover:scale-105"
+        >
+          Clear Data
+        </button>
       </div>
       <div></div>
       {cart.map((item) => (
         <div
           key={item.id}
-          className="border mx-40 flex border-gray-500 justify-around  bg-gray-800 m-3"
+          className="border mx-20 flex border-gray-500 justify-around  bg-gray-800 m-3"
         >
           <div className="flex items-center w-92 mx-20">
             <img className="w-48" src={item.thumbnail} alt="Proudcts-imgage" />

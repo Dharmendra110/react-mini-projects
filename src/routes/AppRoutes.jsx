@@ -39,7 +39,7 @@ const AppRoutes = () => {
         <Route element={<MainContent />}>
           <Route
             index
-            element={<h1 className="text-3xl text-yellow-500">Home Page</h1>}
+            element={<h1 className="text-3xl ">Home Page</h1>}
           />
           <Route path="/users" element={<Users />} />
           <Route path="/products" element={<Products />} />
