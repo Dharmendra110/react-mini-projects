@@ -12,4 +12,5 @@ export const projects = [
   {id:11, name:'Theme Switcher', path:'/projects/theme'},
   {id:12, name:'Star Rating', path:'/projects/rating'},
   {id:13, name:'Tabs Components', path:'/projects/tabs'},
+  {id:14, name:'Multi Step Form', path:'/projects/form'},
 ]

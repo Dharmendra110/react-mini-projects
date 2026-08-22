@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const URL = "https://dummyjson.com/users";
 const Users = () => {
   const [users, setUsers] = useState([]);
+  const [search,setSearch] = useState('')
 
   useEffect(() => {
     async function fetchUsers() {
@@ -31,11 +32,17 @@ const Users = () => {
     }
     fetchUsers();
   }, []);
+
+   const filterItem = users.filter((item)=>item.firstName.toLowerCase().includes(search.toLowerCase().trim()))
+
   return (
     <div>
       <h1 className="text-2xl font-bold text-purple-500 underline mb-5">
         Dummy Users
       </h1>
+
+      <label className="text-lg font-bold" htmlFor=" search">Search</label>
+      <input value={search} onChange={(e)=>setSearch(e.target.value)} className="border p-1 rounded mb-5 text-lg ml-2"  type="text" id="search" placeholder="Search by Name" />
       <table className="m-auto">
         <thead>
           <tr>
@@ -45,21 +52,22 @@ const Users = () => {
             <th className="bg-blue-800 border px-10">Gender</th>
             <th className="bg-blue-800 border px-10">Country</th>
             <th className="bg-blue-800 border px-10">Email</th>
-            <th className="bg-blue-800 border px-20">Image</th>
+            <th className="bg-blue-800 border px-3 ">Image</th>
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
+          {filterItem.map((user) => (
             <tr key={user.id}>
-              <td className="bg-gray-800 border">{user.firstName}</td>
+              <td className="bg-gray-800 p-2 border">{user.firstName}</td>
               <td className="bg-gray-800 border">{user.lastName}</td>
               <td className="bg-gray-800 border">{user.age}</td>
               <td className="bg-gray-800 border">{user.gender}</td>
               <td className="bg-gray-800 border">{user.address.city}</td>
               <td className="bg-gray-800 border">{user.email}</td>
               <td className="border bg-gray-800 flex justify-center">
-                <img src={user.image} alt="User Images" />
+                <img className="w-12" src={user.image} alt="User Images" />
               </td>
+              <td className="border px-2 bg-red-500 hover:bg-red-600"> <button>Delete</button></td>
             </tr>
           ))}
         </tbody>

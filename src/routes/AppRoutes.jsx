@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router";
+import Form from "../projects/multi-step-form/Form";
 
 const Products = lazy(() => import("../features/products/Products"));
 const Cart = lazy(() => import("../features/products/Cart"));
@@ -58,6 +59,7 @@ const AppRoutes = () => {
           <Route path="projects/rating" element={<StarRating />} />
           <Route path="projects/tabs" element={<TabsComponent />} />
           <Route path="projects/todo" element={<TodoApp />} />
+          <Route path="projects/form" element={<Form />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
