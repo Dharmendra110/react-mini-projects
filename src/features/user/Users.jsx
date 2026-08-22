@@ -17,23 +17,18 @@ const Users = () => {
       } catch (err) {
         console.log("fetching users Error", err);
       }
-      // Using Promise then()
-      //    fetch(URL)
-      //    .then(res=>{
-      //   if (!res.ok) {
-      //     throw new Error("Network response was not ok ");
-      //   }
-      //   return res.json();
-      // })
-      // .then(data=>setUsers(data.users))
-      // .catch(err=>{
-      //   console.log('fetching users Error',err)
-      // })
+  
     }
     fetchUsers();
   }, []);
-
+   
+  // Search Filter
    const filterItem = users.filter((item)=>item.firstName.toLowerCase().includes(search.toLowerCase().trim()))
+
+   // Delete
+   function handleDelete(id){
+    setUsers((prev)=>prev.filter((item)=>item.id!==id))
+   }
 
   return (
     <div>
@@ -67,7 +62,7 @@ const Users = () => {
               <td className="border bg-gray-800 flex justify-center">
                 <img className="w-12" src={user.image} alt="User Images" />
               </td>
-              <td className="border px-2 bg-red-500 hover:bg-red-600"> <button>Delete</button></td>
+              <td className="border px-2 bg-red-500 hover:bg-red-600"> <button onClick={()=>handleDelete(user.id)}>Delete</button></td>
             </tr>
           ))}
         </tbody>
